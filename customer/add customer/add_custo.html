@@ -1,0 +1,62 @@
+<?php
+include("connection.php");
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="add_custo.css">
+    <title>Add Customer</title>
+</head>
+<body>
+    <div class="container">
+        <div class="title">Customer Details</div>
+            <form action="connection.php" method="POST">
+                <div class="customer-details">
+                
+                    <div class ="input-box">
+                        <span class="details">Customer_name :</span>
+                        <input type="text" placeholder="enter the name" required name="Customer_name">
+                    </div>
+                    <div class ="input-box">
+                        <span class="details">Phone_no :</span>
+                        <input type="text" placeholder="enter the number" required name="Phone_no">
+                    </div>
+                    <div class ="input-box">
+                        <span class="details">Address :</span>
+                        <input type="text" placeholder="enter the address" required name="Address">
+                    </div>
+                    <div class="button">
+                    <input type="submit" name="submit">
+                    </div> 
+                </div>
+            </form>
+        </div>
+    </div>
+   
+    <?php
+    if(isset($_POST['sumbit']))
+    {
+        $Customer_ID=$_POST['Customer_ID'];
+        $Customer_name=$_POST['Customer_name'];
+        $Phone_no=$_POST['Phone_no'];
+        $Address=$_POST['Address'];
+
+    }
+    $res=mysqli_query($mysqli,"INSERT into customer values('$Customer_ID','$Customer_name',' $Phone_no','$Address')");
+    if($result)
+    {
+        echo"success";
+    }
+    else{
+        echo"failed";
+    }
+    ?> 
+
+     
+    
+</body>
+</html>
